@@ -18,3 +18,7 @@ data/
 __pycache__/
 *.pyc
 .env
+
+# Plots/outputs
+outputs/*
+!outputs/.gitkeep

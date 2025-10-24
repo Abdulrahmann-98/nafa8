@@ -1,0 +1,49 @@
+project: nafa8
+flexpart:
+  version_dir: /data/aalkathe/FLEXWRF_v3.3.2_LATMOS
+  runs_dir: /data/aalkathe/test_abdul/flex_run
+  main_run: test_backward_CTC/first_trial
+  large_run: test_CO
+  typical_outputs: [flxout_d01_YYYYMMDD_230000.nc, partposit_YYYYMMDDHHMMSS]
+
+wrf:
+  campaign_dir: /scratchu/aalkathe/data/alpaca/emission/EPA/WindLidar_assim/full_campaign
+  grid: {west_east: 201, south_north: 201, bottom_top: 38}
+  projection: Lambert_Conformal
+  time_resolution: 1H
+  date_range: ["2022-01-17", "2022-02-26"]
+  sample_file: wrfout_d02_2022-01-17_00:00:00
+
+emissions:
+  base_dir: /scratchu/aalkathe/data/alpaca/emission/EPA/surface_emissions
+  subdirs: [airports, onroad, nonroad, residential_gas, residential_wood, etc]
+  sample_file: onroad/CO_full.nc
+  grid: {x: 199, y: 199, layers: 1}
+  units: moles/s
+  conventions: CF-1.6
+  projection: Lambert_Conformal
+  attributes:
+    P_ALP: 50
+    P_BET: 70
+    P_GAM: -148
+    XCELL: 1333.333
+    YCELL: 1333.333
+
+boundaries:
+  dir: /data/aalkathe/abdul_from_natalie/python_plotting/ALPACA_data_prelim/FNSB_Boundaries
+  files:
+    - Fairbanks.txt
+    - FNSB_Non-At.txt
+    - NorthPole.txt
+  format: csv
+  columns: [lon, lat, z]
+
+codes:
+  dir: /data/aalkathe/abdul_from_natalie/codes/FLEXPART-WRF/abdul
+  scripts:
+    - map_surf_hourly.py
+    - plot_particles_backward.py
+    - flex_select_tracers_cli.py
+    - plan_your_run.slurm
+  outputs: cell_masses_YYYY-MM-DD.csv
+

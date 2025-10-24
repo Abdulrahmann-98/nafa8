@@ -1,0 +1,36 @@
+# NAFA8 PROJECT: PATHS AND DATA SUMMARY
+# -------------------------------------------------------
+FLEXPART_WRF_VERSION=/data/aalkathe/FLEXWRF_v3.3.2_LATMOS
+FLEX_RUNS_DIR=/data/aalkathe/test_abdul/flex_run
+  ├─ test_backward_CTC/first_trial → main backward test run
+  ├─ test_CO → full forward CO run (≈37 GB)
+  ├─ test_street_multPoints, test_street_sens → sensitivity runs
+  └─ plots_surface*, explore_backTraj → post-processing/plots
+
+WRF_CAMPAIGN_DIR=/scratchu/aalkathe/data/alpaca/emission/EPA/WindLidar_assim/full_campaign
+  • netCDF-4 daily wrfout_d02_YYYY-MM-DD_00:00:00 (symlinks)
+  • 201 × 201 × 38 grid, 24 h periods (1 h interval)
+  • projection = Lambert Conformal (Fairbanks region)
+
+EMISSIONS_DIR=/scratchu/aalkathe/data/alpaca/emission/EPA/surface_emissions
+  • subfolders: airports, nonroad, onroad, residential_gas, etc.
+  • sample file: onroad/CO_full.nc → emiss(time, LAY, y, x)
+  • grid: 199 × 199, same Lambert projection (Δ = 1.333 km)
+  • units: moles s⁻¹, 24 time steps per day
+
+BOUNDARIES_DIR=/data/aalkathe/abdul_from_natalie/python_plotting/ALPACA_data_prelim/FNSB_Boundaries
+  • ASCII polygons: Fairbanks.txt (1323 pts), FNSB_Non-At.txt (98 pts), NorthPole.txt (463 pts)
+  • columns: LON, LAT, 0
+
+CODE_DIR=/data/aalkathe/abdul_from_natalie/codes/FLEXPART-WRF/abdul
+  • daily cell_masses_YYYY-MM-DD.csv files + Python tools:
+    - map_surf_hourly.py, plot_particles_backward.py, flex_select_tracers_cli.py
+    - plan_your_run.slurm (batch template)
+  • produces plots & hourly maps.
+
+NOTES:
+- WRF/Emissions grids align spatially.
+- FLEXPART runs read WRF fields from d02 and write flxout_*.nc.
+- Boundaries files define Fairbanks and North Pole zones for filtering plots.
+# -------------------------------------------------------
+
