@@ -1,0 +1,20 @@
+# Never commit large/raw data
+data/
+*.nc
+*.nc4
+*.grib
+*.grb
+*.bin
+*.tar*
+*.zip
+*.h5
+*.parquet
+*.csv
+
+# But DO allow curated tiny samples inside samples/
+!samples/**
+
+# Python cruft
+__pycache__/
+*.pyc
+.env
