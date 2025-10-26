@@ -1,0 +1,42 @@
+wrf:
+  kind: "model-output"
+  root: ${wrf_dir}         # from important_paths.yaml
+  example: "wrfout_d02_2022-01-17_00:00:00"
+  dims:
+    Time: 24
+    south_north: 201
+    west_east: 201
+    bottom_top: 38
+  coords: [XLAT(Time, y, x), XLONG(Time, y, x)]
+  required_vars: [U10, V10, T2, PH, PHB]
+  projection:
+    MAP_PROJ: 1          # Lambert Conformal
+    TRUELAT1: 50.0
+    TRUELAT2: 70.0
+    STAND_LON: -148.0
+  notes: "Times in char format; 1-hourly; 201x201; DX=DY=1333.333 m"
+
+emissions:
+  kind: "inventory"
+  root: ${emi_dir}
+  example: "onroad/CO_full.nc"
+  dims: {time: 24, LAY: 1, y: 199, x: 199}
+  var: "emiss"            # units: moles/s
+  ioapi_attrs: [P_ALP, P_BET, P_GAM, XCELL, YCELL, XORIG, YORIG, NCOLS, NROWS, GDNAM]
+  notes: "Lambert parameters align with WRF; grid 199x199; hour index starts at 0"
+
+flexpart:
+  kind: "trajectories"
+  root: ${runs_dir}
+  main_run_rel: "test_backward_CTC/first_trial"
+  outputs:
+    flxout_pattern: "flxout_d01_YYYYMMDD_230000.nc"
+    particle_pattern: "partposit_*"
+  notes: "Backward runs; daily outputs around 23:00"
+  
+boundaries:
+  kind: "polygons"
+  root: ${boundaries_dir}
+  files: [Fairbanks.txt, FNSB_Non-At.txt, NorthPole.txt]
+  schema: {columns: [lon, lat], header_rows: 2}
+
