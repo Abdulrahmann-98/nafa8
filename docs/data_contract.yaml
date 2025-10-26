@@ -1,0 +1,26 @@
+wrf:
+  path: ${wrf_dir}             # resolved from important_paths.yaml
+  grid: {nx: 201, ny: 201, nz: 38}
+  variables_required: [XLAT, XLONG, U10, V10, T2]
+  time: {interval: 1H, per_file_hours: 24}
+  example_file: wrfout_d02_2022-01-17_00:00:00
+  notes: "Lambert conformal; TRUELAT1=50, TRUELAT2=70, STAND_LON=-148"
+
+emissions:
+  path: ${emi_dir}
+  variable: emiss               # units moles s^-1
+  dims: [time, LAY, y, x]
+  grid: {nx: 199, ny: 199, nz: 1}
+  example_file: onroad/CO_full.nc
+  attrs_expect: [P_ALP, P_BET, P_GAM, XCELL, YCELL]
+
+flexpart:
+  runs_dir: ${runs_dir}
+  main_run_rel: test_backward_CTC/first_trial
+  outputs: [flxout_d01_YYYYMMDD_230000.nc, partposit_*]
+
+boundaries:
+  dir: ${boundaries_dir}
+  files: [Fairbanks.txt, FNSB_Non-At.txt, NorthPole.txt]
+  schema: [lon, lat]
+
