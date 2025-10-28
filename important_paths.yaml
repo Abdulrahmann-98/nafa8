@@ -2,8 +2,8 @@ project: nafa8
 flexpart:
   version_dir: /data/aalkathe/FLEXWRF_v3.3.2_LATMOS
   runs_dir: /data/aalkathe/test_abdul/flex_run
-  main_run: test_backward_CTC/first_trial
-  large_run: test_CO
+  main_run: test_backward_CTC_ANDERSON/CO_23
+  large_run: 
   typical_outputs: [flxout_d01_YYYYMMDD_230000.nc, partposit_YYYYMMDDHHMMSS]
 
 wrf:

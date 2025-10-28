@@ -1,6 +1,6 @@
 # dataset	filepath	why
 wrf	/scratchu/aalkathe/data/alpaca/emission/EPA/WindLidar_assim/full_campaign/wrfout_d02_2022-01-17_00:00:00	first day file
 emissions	/scratchu/aalkathe/data/alpaca/emission/EPA/surface_emissions/onroad/CO_full.nc	CO sample
-flexpart	/data/aalkathe/test_abdul/flex_run/test_backward_CTC/first_trial/flxout_d01_20220117_230000.nc	first flxout
+flexpart	/data/aalkathe/test_abdul/flex_run/test_backward_CTC_ANDERSONS/CO_23/flxout_d01_20220117_230000.nc	first flxout
 boundary	/data/aalkathe/abdul_from_natalie/python_plotting/ALPACA_data_prelim/FNSB_Boundaries/Fairbanks.txt	main polygon
 
