@@ -3,4 +3,7 @@ wrf	/scratchu/aalkathe/data/alpaca/emission/EPA/WindLidar_assim/full_campaign/wr
 emissions	/scratchu/aalkathe/data/alpaca/emission/EPA/surface_emissions/onroad/CO_full.nc	CO sample
 flexpart	/data/aalkathe/test_abdul/flex_run/test_backward_CTC_ANDERSON/CO_23/flxout_d01_20220119_050000.nc	first flxout
 boundary	/data/aalkathe/abdul_from_natalie/python_plotting/ALPACA_data_prelim/FNSB_Boundaries/Fairbanks.txt	main polygon
+obs_series	samples/extracted/obs_CTC_CO_corr_ppm_20220119_20220226.csv	hourly CTC_CO_corr_ppm after QC (blank cells→NaN) for 2022-01-19..2022-02-26 inclusive
+obs_missing_hours	samples/extracted/missing_hours.txt	list of hours (YYYY-MM-DD HH:MM) where obs were blank/NaN in source XLSX
+obs_missing_runs	samples/extracted/missing_runs.txt	FLEXPART hour tokens (YYYYMMDD_HH0000) to skip corresponding to blank/NaN obs
 
